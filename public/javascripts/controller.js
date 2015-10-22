@@ -1,6 +1,6 @@
 var rateYourMeal = angular.module('rateYourMeal', []);
 
-moment.tz.setDefault("Asia/Singapore");
+// moment.tz.setDefault("Asia/Singapore");
 
 rateYourMeal.controller('rateYourMealCtrl', function ($http, $scope) {
 	console.log(moment().format('YYYY-MM-DD'))
