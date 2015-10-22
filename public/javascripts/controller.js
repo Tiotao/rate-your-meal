@@ -7,10 +7,10 @@ rateYourMeal.controller('rateYourMealCtrl', function ($http, $scope) {
 	$scope.view = {};
 	$scope.util = {};
 	$scope.util.allowBreakfast = function(){
-		return moment().isAfter(moment(0730, 'HHmm')) && moment().day() != 0
+		return moment().isAfter(moment.tz("0730", "HHmm", "Asia/Singapore")) && moment().day() != 0
 	}
 	$scope.util.allowDinner = function(){
-		return moment().isAfter(moment(1730, 'HHmm')) && moment().day() != 6
+		return moment().isAfter(moment.tz("1730", "HHmm", "Asia/Singapore")) && moment().day() != 6
 	}
 
 	if (!$scope.util.allowBreakfast()){
