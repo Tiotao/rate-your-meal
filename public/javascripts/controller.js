@@ -1,22 +1,24 @@
 var rateYourMeal = angular.module('rateYourMeal', []);
 
+moment.tz.setDefault("Asia/Singapore");
+
 rateYourMeal.controller('rateYourMealCtrl', function ($http, $scope) {
 	console.log(moment().format('YYYY-MM-DD'))
 	$scope.view = {};
 	$scope.util = {};
-	$scope.util.isSunday = function(){
-		return moment().day() == 0
+	$scope.util.allowBreakfast = function(){
+		return moment().isAfter(moment(0730, 'HHmm')) && moment().day() != 0
 	}
-	$scope.util.isSaturday = function(){
-		return moment().day() == 6
+	$scope.util.allowDinner = function(){
+		return moment().isAfter(moment(1730, 'HHmm')) && moment().day() != 6
 	}
 
-	if ($scope.util.isSunday()){
+	if (!$scope.util.allowBreakfast()){
 		$scope.rate = {
 			rate: 5,
 			mealType: 1,
 		};
-	} else if ($scope.util.isSaturday()){
+	} else if (!$scope.util.allowDinner()){
 		$scope.rate = {
 			rate: 5,
 			mealType: 0,

@@ -34,10 +34,10 @@ block content
 									h3 Meal
 								.col-sm-12
 									label.radio-inline
-										input(type="radio", name="mealType", ng-model="rate.mealType", value=0, ng-disabled="util.isSunday()") 
+										input(type="radio", name="mealType", ng-model="rate.mealType", value=0, ng-disabled="!util.allowBreakfast()") 
 										| Breakfast
 									label.radio-inline
-										input(type="radio", name="mealType", ng-model="rate.mealType", value=1, ng-disabled="util.isSaturday()")
+										input(type="radio", name="mealType", ng-model="rate.mealType", value=1, ng-disabled="!util.allowDinner()")
 										| Dinner
 						.row
 							.form-group
