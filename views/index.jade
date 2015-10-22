@@ -1,0 +1,79 @@
+extends layout
+
+block content
+	.container-fluid.main
+		.section
+			.row
+				.col-md-12.text-center
+					h1 Rate Your Meals
+					h4 {{view.todayDate}}
+		.section
+			.row
+				.col-md-2
+				.col-md-4.col-sm-6.col-xs-12.text-center.meal-card-container(ng-repeat="meal in view.todayRate | orderBy:'meal_type'")
+					.meal-card
+						.row
+							.col-md-12 
+								h4 {{ meal.meal_type }}
+						.row
+							.col-md-12
+								h2 {{ meal.rate }}
+						.row
+							.col-md-12 {{ meal.vote_count }} people have rated
+
+		.section
+			.row
+				.col-md-12.text-center
+					h2 Rate Today's Meals Responsibly
+			.row
+				.col-md-4.col-md-offset-4.text-center
+					form(novalidate)
+						.row
+							.form-group
+								.col-sm-12
+									h3 Meal
+								.col-sm-12
+									label.radio-inline
+										input(type="radio", name="mealType", ng-model="rate.mealType", value=0, ng-disabled="util.isSunday()") 
+										| Breakfast
+									label.radio-inline
+										input(type="radio", name="mealType", ng-model="rate.mealType", value=1, ng-disabled="util.isSaturday()")
+										| Dinner
+						.row
+							.form-group
+								.col-sm-12
+									h3 Rate
+								.col-sm-12
+									label.radio-inline
+										input(type="radio", ng-model="rate.rate", value=1, name="mealRate")
+										| 1
+									label.radio-inline
+										input(type="radio", ng-model="rate.rate", value=2, name="mealRate")
+										| 2
+									label.radio-inline
+										input(type="radio", ng-model="rate.rate", value=3, name="mealRate")
+										| 3
+									label.radio-inline
+										input(type="radio", ng-model="rate.rate", value=4, name="mealRate")
+										| 4
+									label.radio-inline
+										input(type="radio", ng-model="rate.rate", value=5, name="mealRate")
+										| 5
+						//- h6 Rate
+						//- input(type="radio", ng-modal="rate.Rate", value="1") 1
+						//- input(type="radio", ng-modal="rate.Rate", value="2") 2
+						//- input(type="radio", ng-modal="rate.Rate", value="3") 3
+						//- input(type="radio", ng-modal="rate.Rate", value="4") 4
+						//- input(type="radio", ng-modal="rate.Rate", value="5") 5
+						.row
+							.form-group
+								.col-md-12.text-center
+									br
+									input.btn.btn-default.btn-lg(type="submit", ng-click="api.rateThisMeal(rate.mealType, rate.rate)", value="Submit")
+	
+		.section
+			.row
+				.col-md-12.text-center
+					h2 Past Ratings
+				.col-md-12.text-center
+					.graph

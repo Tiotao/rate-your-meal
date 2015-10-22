@@ -1,0 +1,22 @@
+doctype html
+html(ng-app="rateYourMeal")
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="//code.jquery.com/jquery-1.11.3.min.js")
+    script(type="text/javascript", src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js')
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+    //- link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,300,700")
+    script(src="/javascripts/controller.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+    script(src="http://momentjs.com/downloads/moment.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js")
+    script(src="http://underscorejs.org/underscore-min.js")
+
+    
+  body(ng-controller="rateYourMealCtrl")
+    block content
+
+  script(src="/javascripts/graph.js")
